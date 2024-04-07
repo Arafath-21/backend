@@ -30,7 +30,7 @@ const studentSchema = new mongoose.Schema({
   mockInterview: {type: String,default: "0"},
   isMentor: {type: Boolean,default: false},
   role: {type: String,default: "student"},
-  leave: [{type: mongoose.Schema.Types.ObjectId,ref: "Leave"}],
+  Leaves: [{type: mongoose.Schema.Types.ObjectId,ref: "Leaves"}],
   portfolio: [{type: mongoose.Schema.Types.ObjectId,ref: "Portfolio"}],
   capstone: [{type: mongoose.Schema.Types.ObjectId,ref: "Capstone"}],
   webcode: [{type: mongoose.Schema.Types.ObjectId,ref: "Webcode"}],

@@ -20,19 +20,20 @@ const signupStudent = async (req, res) => {
       
       //Signingup student
       const student = await studentModel.create({
-        email:req.body.email,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
-        yearOfExperience:req.body.yearOfExperience,
-        qualification:req.body.qualification,
+        email:req.body.email,
         contactNumber:req.body.contactNumber,
         yearOfPassedOut:req.body.yearOfPassedOut,
+        yearOfExperience:req.body.yearOfExperience,
+        qualification:req.body.qualification,
         noticePeriod:req.body.noticePeriod,
         city:req.body.city,
         zip:req.body.zip,
         password:req.body.password,
         confirmPassword:req.body.confirmPassword,
         resetToken: randomString,
+        role:req.body.role
       });
       
       //sending email for Confirm account
