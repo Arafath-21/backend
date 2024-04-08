@@ -32,7 +32,7 @@ const createQuery = async (req, res) => {
 
         // Save the new query request
         const createdQuery = await newQuery.save();
-        if (newQuery) {
+        if (createdQuery) {
             // Associating leave with the student
             student.query=student.query.concat(createdQuery._id);
 

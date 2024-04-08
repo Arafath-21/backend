@@ -32,11 +32,11 @@ const studentSchema = new mongoose.Schema({
   role: {type: String,default: "student"},
   Leaves: [{type: mongoose.Schema.Types.ObjectId,ref: "Leaves"}],
   query: [{type: mongoose.Schema.Types.ObjectId,ref: "query"}],
+  tasks: [{type: mongoose.Schema.Types.ObjectId,ref: "tasks"}],
   portfolio: [{type: mongoose.Schema.Types.ObjectId,ref: "Portfolio"}],
   capstone: [{type: mongoose.Schema.Types.ObjectId,ref: "Capstone"}],
   webcode: [{type: mongoose.Schema.Types.ObjectId,ref: "Webcode"}],
-  mock: [{type: mongoose.Schema.Types.ObjectId,ref: "Mock"}],
-  task: [{type: mongoose.Schema.Types.ObjectId,ref: "Task"}]
+  mock: [{type: mongoose.Schema.Types.ObjectId,ref: "Mock"}]
 },{
     versionKey:false,
     collection:'students'
