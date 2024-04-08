@@ -87,20 +87,17 @@ const createLeave = async (req, res) => {
 const deleteLeave = async (req, res) => {
     try {
         const leaveId = req.params.id;
-        console.log(leaveId);
         // Deleting the leave entry
         const deletedLeave = await leaveModel.findByIdAndDelete(leaveId);
         if (!deletedLeave) {
             return res.status(404).send({ message: "No leave record found" });
         }
-        console.log(deletedLeave);
         // Removing the leave reference from the associated student
         const student = await studentModel.findOneAndUpdate(
             { Leaves: leaveId },
             { $pull: { Leaves: leaveId } },
             { new: true }
         );
-        console.log(student);
         if (!student) {
             return res.status(404).send({ message: "Associated student not found" });
         }
@@ -216,9 +213,7 @@ const fetchAllLeavesUser = async (req, res) => {
 const approveLeave = async (req, res) => {
     try {
         const leaveId = req.params.id;
-        console.log(`This is ID -- ${leaveId}`);
         const leave = await leaveModel.findById(leaveId);
-        console.log(`This is Leave ---- ${leave}`);
         if (!leave) {
             return res.status(404).json({ message: "Leave data not found" });
         }
@@ -230,7 +225,6 @@ const approveLeave = async (req, res) => {
             { Leaves: leaveId },
             { new: true }
         );
-        console.log(`This is student --- ${student}`);
         if (!student) {
             return res.status(404).send({ message: "Associated student not found" });
         }

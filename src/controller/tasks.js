@@ -114,9 +114,7 @@ const fetchAllTasks = async (req,res) => {
 const updateTaskScore = async (req,res) => {
   try {
     const taskId = req.params.id;
-    console.log(taskId);
     const task = await taskModel.findById(taskId);
-    console.log(task);
     if (!task) {
         return res.status(404).json({ message: "Task data not found" });
     }

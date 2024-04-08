@@ -83,7 +83,6 @@ const updateStudent = async (req, res) => {
 
     // Check if the student exists
     const matchedStudent = await studentModel.findOne({ _id:req.params.id });
-    console.log(matchedStudent);
     if (!matchedStudent) {
       return res.status(400).send({ message: "Entered Email not found" });
     }
@@ -110,7 +109,6 @@ const confirmStudent = async (req, res) => {
   try {
     // const resetToken = req.params.resetToken;
     const matchedStudent = await studentModel.findOne({ resetToken:req.params.resetToken });
-    console.log(`be reset ${matchedStudent}`);
 
     //if student not found throw error
     if (matchedStudent === null || matchedStudent.resetToken === "") {
@@ -199,7 +197,6 @@ const resetPassword = async (req, res) => {
     
     // finding matched student
     const matchedStudent = await studentModel.findOne({ resetToken:req.params.resetToken });
-    console.log(matchedStudent);
     //if student not found throw error
     if (matchedStudent === "null" || matchedStudent.resetToken === "") {
       return res.status(400).json({ message: "student not exists or reset link expired" });

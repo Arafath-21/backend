@@ -34,7 +34,6 @@ const getAllClasses = async (req, res) => {
 const getClassById = async (req, res) => {
     try {
         const singleClass = await classModel.findById({_id: req.params.id });
-        console.log(singleClass);
         if (singleClass) {
             return res.status(200).send({
                 message: "a",

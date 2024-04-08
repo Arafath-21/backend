@@ -54,13 +54,11 @@ const createQuery = async (req, res) => {
 const deleteQuery = async (req, res) => {
     try {
         const queryId = req.params.id;
-        console.log(queryId);
         // Deleting the query entry
         const deletedQuery = await queryModel.findByIdAndDelete(queryId);
         if (!deletedQuery) {
             return res.status(404).send({ message: "No Query found" });
         }
-        console.log(deletedQuery);
         // Removing the Query reference from the associated student
         const student = await studentModel.findOneAndUpdate(
             { query: queryId },
