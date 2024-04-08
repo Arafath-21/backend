@@ -31,10 +31,10 @@ const studentSchema = new mongoose.Schema({
   isMentor: {type: Boolean,default: false},
   role: {type: String,default: "student"},
   Leaves: [{type: mongoose.Schema.Types.ObjectId,ref: "Leaves"}],
+  query: [{type: mongoose.Schema.Types.ObjectId,ref: "query"}],
   portfolio: [{type: mongoose.Schema.Types.ObjectId,ref: "Portfolio"}],
   capstone: [{type: mongoose.Schema.Types.ObjectId,ref: "Capstone"}],
   webcode: [{type: mongoose.Schema.Types.ObjectId,ref: "Webcode"}],
-  query: [{type: mongoose.Schema.Types.ObjectId,ref: "Query"}],
   mock: [{type: mongoose.Schema.Types.ObjectId,ref: "Mock"}],
   task: [{type: mongoose.Schema.Types.ObjectId,ref: "Task"}]
 },{

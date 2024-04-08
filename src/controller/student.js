@@ -37,7 +37,6 @@ const signupStudent = async (req, res) => {
       });
       
       //sending email for Confirm account
-  
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
