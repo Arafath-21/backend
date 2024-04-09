@@ -84,12 +84,7 @@ const updateStudent = async (req, res) => {
     // Check if the student exists
     const matchedStudent = await studentModel.findOne({ _id:req.params.id });
     if (!matchedStudent) {
-      return res.status(400).send({ message: "Entered Email not found" });
-    }
-
-    // Hash the password if it's provided
-    if (req.body.password) {
-      req.body.password = await Auth.hashPassword(req.body.password);
+      return res.status(402).send({ message: "Entered Email not found" });
     }
 
     // Update the student's details
@@ -101,7 +96,7 @@ const updateStudent = async (req, res) => {
 
   } catch (error) {
     console.error("Error during update:", error);
-    return res.status(400).json({ message: "Error on update, please try again",error });
+    return res.status(402).json({ message: "Error on update, please try again",error });
   }
 };
 
@@ -259,5 +254,22 @@ const login = async (req, res) => {
 }
 };
 
+const getStudentById = async (req, res) => {
+  try {
+    const matchedStudent = await studentModel.findOne({ _id: req.params.id });
+    if (!matchedStudent) {
+      return res.status(404).send({ message: "Student not found" });
+    }
+    res.status(200).send({
+      message: "Fetched student by id",
+      matchedStudent
+    });
+  } catch (error) {
+    console.error("Error in getStudentById:", error);
+    res.status(500).send({ message: "Internal Server Error",error });
+  }
+};
 
-export default {signupStudent,updateStudent,confirmStudent,forgotPassword,resetPassword,login}
+
+
+export default {signupStudent,updateStudent,confirmStudent,forgotPassword,resetPassword,login,getStudentById}
